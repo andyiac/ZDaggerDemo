@@ -20,6 +20,7 @@
         </activity>
 
         <activity android:name=".ui.StartUpCourseMainActivity" />
+        <activity android:name=".ui.CourseSingleTopicListActivity" />
     </application>
 
 

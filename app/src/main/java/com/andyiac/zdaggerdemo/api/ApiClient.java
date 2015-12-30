@@ -66,6 +66,11 @@ public class ApiClient {
         @GET("/api/courses")
         Observable<AllCourses> getAllCourses();
 
+        @GET("/api/courses")
+        Observable<AllCourses> getAllCourses(@Query(value = "p", encodeValue = true) int p,
+                                             @Query(value = "n", encodeValue = true) int n,
+                                             @Query(value = "type", encodeValue = true) int type);
+
         @GET("/api/course/{course_id}")
         Observable<CourseDetails> getCourseDetails(@Path("course_id") String course_id);
 

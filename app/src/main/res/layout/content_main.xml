@@ -56,6 +56,12 @@
         android:layout_height="wrap_content"
         android:onClick="onClickCourseActivity"
         android:text="onClick Course Activity" />
+     <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickCourseSingleTopicListActivity"
+        android:text="onClick Course single topic list" />
+
 
 
 </LinearLayout>

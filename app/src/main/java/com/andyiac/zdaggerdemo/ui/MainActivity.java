@@ -214,4 +214,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StartUpCourseMainActivity.class);
         startActivity(intent);
     }
+
+    public void onClickCourseSingleTopicListActivity(View view) {
+        Intent intent = new Intent(this, CourseSingleTopicListActivity.class);
+        startActivity(intent);
+    }
 }
