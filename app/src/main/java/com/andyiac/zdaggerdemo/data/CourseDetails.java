@@ -187,7 +187,6 @@ public class CourseDetails {
             public void setApp(String app) {
                 this.app = app;
             }
-
             public void setTime(String time) {
                 this.time = time;
             }
