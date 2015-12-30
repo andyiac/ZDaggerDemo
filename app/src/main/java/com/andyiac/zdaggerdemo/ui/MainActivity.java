@@ -8,7 +8,11 @@ import android.widget.Button;
 import com.alibaba.fastjson.JSON;
 import com.andyiac.zdaggerdemo.R;
 import com.andyiac.zdaggerdemo.api.ApiClient;
+import com.andyiac.zdaggerdemo.data.AllCourses;
 import com.andyiac.zdaggerdemo.data.Course;
+import com.andyiac.zdaggerdemo.data.CourseDetails;
+import com.andyiac.zdaggerdemo.data.CourseLikeCount;
+import com.andyiac.zdaggerdemo.data.CourseType;
 import com.orhanobut.logger.Logger;
 
 
@@ -35,16 +39,13 @@ public class MainActivity extends AppCompatActivity {
         mBtnTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getData();
+                onClickGetCourseIndex();
             }
         });
     }
 
 
-    private void getData() {
-
-        System.out.println("==============");
-        System.out.println(apiService);
+    private void onClickGetCourseIndex() {
 
         AppObservable.bindActivity(this, apiService.getCourseIndex())
                 .map(new Func1<Course, Course>() {
@@ -69,6 +70,120 @@ public class MainActivity extends AppCompatActivity {
                         Logger.json(JSON.toJSONString(course));
                     }
                 });
+    }
+
+
+    public void onClickGetCourseTypes(View view) {
+
+        AppObservable.bindActivity(this, apiService.getCourseTypes())
+                .map(new Func1<CourseType, CourseType>() {
+                    @Override
+                    public CourseType call(CourseType courseType) {
+                        return courseType;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CourseType>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(CourseType courseType) {
+                        Logger.json(JSON.toJSONString(courseType));
+
+                    }
+                });
+    }
+
+    public void onClickGetAllCourses(View view) {
+        AppObservable.bindActivity(this, apiService.getAllCourses())
+                .map(new Func1<AllCourses, AllCourses>() {
+                    @Override
+                    public AllCourses call(AllCourses allCourses) {
+                        return allCourses;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<AllCourses>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(AllCourses allCourses) {
+                        Logger.json(JSON.toJSONString(allCourses));
+                    }
+                });
+    }
+
+    public void onClickGetCourseDetails(View view) {
+        AppObservable.bindActivity(this, apiService.getCourseDetails("73"))
+                .map(new Func1<CourseDetails, CourseDetails>() {
+                    @Override
+                    public CourseDetails call(CourseDetails courseDetails) {
+                        return courseDetails;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CourseDetails>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(CourseDetails courseDetails) {
+                        Logger.json(JSON.toJSONString(courseDetails));
+                    }
+                });
+
+    }
+
+    public void onClickCourseLikeCount(View view) {
+        AppObservable.bindActivity(this, apiService.getCourseLikeCount("74"))
+                .map(new Func1<CourseLikeCount, CourseLikeCount>() {
+                    @Override
+                    public CourseLikeCount call(CourseLikeCount courseLikeCount) {
+                        return courseLikeCount;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CourseLikeCount>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(CourseLikeCount courseLikeCount) {
+                        Logger.json(JSON.toJSONString(courseLikeCount));
+                    }
+                });
+
+
     }
 
 
