@@ -11,6 +11,7 @@ import com.andyiac.zdaggerdemo.R;
 import com.andyiac.zdaggerdemo.adapter.CourseListAdapter;
 import com.andyiac.zdaggerdemo.api.ApiClient;
 import com.andyiac.zdaggerdemo.data.Course;
+import com.andyiac.zdaggerdemo.data.CourseBanners;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
@@ -53,6 +54,36 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
 
     private void initData() {
         getCourseIndex();
+        getCourseBanners();
+    }
+
+
+    public void getCourseBanners() {
+        AppObservable.bindActivity(this, apiService.getCourseBanners())
+                .map(new Func1<CourseBanners, CourseBanners>() {
+                    @Override
+                    public CourseBanners call(CourseBanners courseBanners) {
+                        return courseBanners;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CourseBanners>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(CourseBanners courseBanners) {
+                        Logger.json(JSON.toJSONString(courseBanners));
+
+                    }
+                });
     }
 
     private void getCourseIndex() {
