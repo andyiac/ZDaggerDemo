@@ -2,6 +2,7 @@ package com.andyiac.zdaggerdemo.api;
 
 import com.andyiac.zdaggerdemo.data.AllCourses;
 import com.andyiac.zdaggerdemo.data.Course;
+import com.andyiac.zdaggerdemo.data.CourseBanners;
 import com.andyiac.zdaggerdemo.data.CourseDetails;
 import com.andyiac.zdaggerdemo.data.CourseType;
 import com.andyiac.zdaggerdemo.data.CourseLikeCount;
@@ -15,6 +16,7 @@ import retrofit.http.Field;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Path;
+import retrofit.http.Query;
 import rx.Observable;
 
 /**
@@ -68,8 +70,11 @@ public class ApiClient {
         Observable<CourseDetails> getCourseDetails(@Path("course_id") String course_id);
 
         //课堂评论和like统计
-        @POST("/api/course_count")
-        Observable<CourseLikeCount> getCourseLikeCount(@Field("course_id") String course_id);
+        @GET("/api/course_count")
+        Observable<CourseLikeCount> getCourseLikeCount(@Query(value = "course_id", encodeValue = true) String course_id);
+
+        @GET("/api/course_banners")
+        Observable<CourseBanners> getCourseBanners();
 
     }
 }

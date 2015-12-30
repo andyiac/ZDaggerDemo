@@ -36,10 +36,18 @@
         android:layout_height="wrap_content"
         android:onClick="onClickGetCourseDetails"
         android:text="onClickGetCourseDetails" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickCourseLikeCount"
         android:text="onClickCourseLikeCount" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickGetCourseBanners"
+        android:text="onClickGetCourseBanners" />
+
 
 </LinearLayout>
