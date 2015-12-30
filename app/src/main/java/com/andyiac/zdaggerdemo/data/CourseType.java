@@ -50,134 +50,76 @@ public class CourseType {
          * name : 财税2
          */
 
-        private List<TypeProEntity> type_pro;
+        private List<TypeEntity> type_pro;
         /**
          * type : 1
          * uid : 15
          * name : 融资3
          */
 
-        private List<AllEntity> all;
+        private List<TypeEntity> all;
         /**
          * type : 1
          * uid : 15
          * name : 融资3
          */
 
-        private List<TypeBasicEntity> type_basic;
+        private List<TypeEntity> type_basic;
 
-        public void setType_pro(List<TypeProEntity> type_pro) {
+        public void setType_pro(List<TypeEntity> type_pro) {
             this.type_pro = type_pro;
         }
 
-        public void setAll(List<AllEntity> all) {
+        public void setAll(List<TypeEntity> all) {
             this.all = all;
         }
 
-        public void setType_basic(List<TypeBasicEntity> type_basic) {
+        public void setType_basic(List<TypeEntity> type_basic) {
             this.type_basic = type_basic;
         }
 
-        public List<TypeProEntity> getType_pro() {
+        public List<TypeEntity> getType_pro() {
             return type_pro;
         }
 
-        public List<AllEntity> getAll() {
+        public List<TypeEntity> getAll() {
             return all;
         }
 
-        public List<TypeBasicEntity> getType_basic() {
+        public List<TypeEntity> getType_basic() {
             return type_basic;
         }
 
-        public static class TypeProEntity {
-            private int type;
-            private int uid;
-            private String name;
 
-            public void setType(int type) {
-                this.type = type;
-            }
+    }
 
-            public void setUid(int uid) {
-                this.uid = uid;
-            }
+    public static class TypeEntity {
+        private int type;
+        private int uid;
+        private String name;
 
-            public void setName(String name) {
-                this.name = name;
-            }
-
-            public int getType() {
-                return type;
-            }
-
-            public int getUid() {
-                return uid;
-            }
-
-            public String getName() {
-                return name;
-            }
+        public void setType(int type) {
+            this.type = type;
         }
 
-        public static class AllEntity {
-            private int type;
-            private int uid;
-            private String name;
-
-            public void setType(int type) {
-                this.type = type;
-            }
-
-            public void setUid(int uid) {
-                this.uid = uid;
-            }
-
-            public void setName(String name) {
-                this.name = name;
-            }
-
-            public int getType() {
-                return type;
-            }
-
-            public int getUid() {
-                return uid;
-            }
-
-            public String getName() {
-                return name;
-            }
+        public void setUid(int uid) {
+            this.uid = uid;
         }
 
-        public static class TypeBasicEntity {
-            private int type;
-            private int uid;
-            private String name;
+        public void setName(String name) {
+            this.name = name;
+        }
 
-            public void setType(int type) {
-                this.type = type;
-            }
+        public int getType() {
+            return type;
+        }
 
-            public void setUid(int uid) {
-                this.uid = uid;
-            }
+        public int getUid() {
+            return uid;
+        }
 
-            public void setName(String name) {
-                this.name = name;
-            }
-
-            public int getType() {
-                return type;
-            }
-
-            public int getUid() {
-                return uid;
-            }
-
-            public String getName() {
-                return name;
-            }
+        public String getName() {
+            return name;
         }
     }
 }

@@ -21,6 +21,7 @@
 
         <activity android:name=".ui.StartUpCourseMainActivity" />
         <activity android:name=".ui.CourseSingleTopicListActivity" />
+        <activity android:name=".ui.CourseAllListActivity" />
     </application>
 
 

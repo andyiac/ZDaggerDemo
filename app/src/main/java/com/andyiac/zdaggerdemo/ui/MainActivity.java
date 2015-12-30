@@ -219,4 +219,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CourseSingleTopicListActivity.class);
         startActivity(intent);
     }
+
+    public void onClickCourseAllListActivity(View view) {
+        Intent intent = new Intent(this, CourseAllListActivity.class);
+        startActivity(intent);
+    }
 }
