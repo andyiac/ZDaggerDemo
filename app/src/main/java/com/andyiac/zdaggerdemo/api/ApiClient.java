@@ -20,8 +20,8 @@ public class ApiClient {
 
     static final int CONNECT_TIMEOUT_MILLIS = 15 * 1000; // 15s
     static final int READ_TIMEOUT_MILLIS = 20 * 1000; // 20s
-    private static final String BASE_URL = "http://mock-api.com/TyTabSFqXNyqMpNw.mock";
-    private static ApiServiceInterface testDemoApiInterface;
+    private static final String BASE_URL = "http://192.168.10.154";
+    private static ApiServiceInterface apiServiceInterface;
 
     /**
      * 用于Stethoscope调试的httpClient
@@ -30,20 +30,21 @@ public class ApiClient {
         OkHttpClient client = new OkHttpClient();
         client.setConnectTimeout(CONNECT_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);
         client.setReadTimeout(READ_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);
+        //client.networkInterceptors().add(new StethoInterceptor());
         return new OkClient(client);
     }
 
     public static ApiServiceInterface getApiClient() {
-        if (testDemoApiInterface == null) {
+        if (apiServiceInterface == null) {
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setClient(getOkClient())
                     .setEndpoint(BASE_URL)
                     .build();
 
-            testDemoApiInterface = restAdapter.create(ApiServiceInterface.class);
+            apiServiceInterface = restAdapter.create(ApiServiceInterface.class);
         }
 
-        return testDemoApiInterface;
+        return apiServiceInterface;
     }
 
     public interface ApiServiceInterface {
