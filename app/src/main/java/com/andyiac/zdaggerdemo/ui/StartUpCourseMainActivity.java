@@ -3,7 +3,6 @@ package com.andyiac.zdaggerdemo.ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -51,8 +50,6 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-
-
         getCourseIndex();
     }
 
@@ -97,11 +94,24 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
         final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         mRVCourseTop.setLayoutManager(layoutManager);
         mTopCourseAdapter = new CourseListAdapter(this, mTopCourse);
-
         mRVCourseTop.setAdapter(mTopCourseAdapter);
-
-
     }
+
+//    private void initBasicRecycleView() {
+//        final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+//        mRVCourseBasic.setLayoutManager(layoutManager);
+//        mTopCourseAdapter = new CourseListAdapter(this, mBasicCourse);
+//        mRVCourseTop.setAdapter(mTopCourseAdapter);
+//
+//    }
+//
+//    private void initProRecycleView() {
+//        final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+//        mRVCourseTop.setLayoutManager(layoutManager);
+//        mTopCourseAdapter = new CourseListAdapter(this, mProCourse);
+//        mRVCourseTop.setAdapter(mTopCourseAdapter);
+//
+//    }
 
 
 }
