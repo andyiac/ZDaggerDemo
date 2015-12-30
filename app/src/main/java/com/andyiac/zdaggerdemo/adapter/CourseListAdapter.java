@@ -23,10 +23,10 @@ import java.util.List;
 public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.ViewHolder> {
 
 
-    private List<Course.DataEntity.TopEntity.CourseEntity> mListData;
+    private List<Course.CourseEntity> mListData;
     private Context mContext;
 
-    public CourseListAdapter(Context context, List<Course.DataEntity.TopEntity.CourseEntity> data) {
+    public CourseListAdapter(Context context, List<Course.CourseEntity> data) {
         this.mContext = context;
         this.mListData = data;
 
@@ -42,7 +42,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        Course.DataEntity.TopEntity.CourseEntity course = mListData.get(position);
+        Course.CourseEntity course = mListData.get(position);
         Logger.e("=======");
         Logger.json(JSON.toJSONString(course));
         holder.mTvTitle.setText(course.getTitle());

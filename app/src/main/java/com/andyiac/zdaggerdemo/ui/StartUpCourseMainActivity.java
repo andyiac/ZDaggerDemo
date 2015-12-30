@@ -29,11 +29,13 @@ import rx.functions.Func1;
 public class StartUpCourseMainActivity extends AppCompatActivity {
 
     private RecyclerView mRVCourseTop, mRVCourseBasic, mRVCoursePro;
-    private List<Course.DataEntity.TopEntity.CourseEntity> mTopCourse = new ArrayList<>();
-    private List<Course.DataEntity.BasicEntity.CourseEntity> mBasicCourse = new ArrayList<>();
-    private List<Course.DataEntity.ProEntity.CourseEntity> mProCourse = new ArrayList<>();
+    private List<Course.CourseEntity> mTopCourse = new ArrayList<>();
+    private List<Course.CourseEntity> mBasicCourse = new ArrayList<>();
+    private List<Course.CourseEntity> mProCourse = new ArrayList<>();
 
     private CourseListAdapter mTopCourseAdapter;
+    private CourseListAdapter mBasicCourseAdapter;
+    private CourseListAdapter mProCourseAdapter;
 
     private ApiClient.ApiServiceInterface apiService;
 
@@ -45,7 +47,7 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
         apiService = ApiClient.getApiClient();
 
         initView();
-        initRecycleView();
+
         initData();
     }
 
@@ -79,6 +81,13 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
                         Logger.json(JSON.toJSONString(course));
                         mTopCourse.addAll(course.getData().getTop().getCourse());
                         mTopCourseAdapter.notifyDataSetChanged();
+
+                        mBasicCourse.addAll(course.getData().getBasic().getCourse());
+                        mBasicCourseAdapter.notifyDataSetChanged();
+
+                        mProCourse.addAll(course.getData().getPro().getCourse());
+                        mProCourseAdapter.notifyDataSetChanged();
+
                     }
                 });
     }
@@ -88,30 +97,36 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
         mRVCourseTop = (RecyclerView) findViewById(R.id.id_rv_course_top);
         mRVCourseBasic = (RecyclerView) findViewById(R.id.id_rv_course_basic);
         mRVCoursePro = (RecyclerView) findViewById(R.id.id_rv_course_pro);
+
+        initTopRecycleView();
+        initBasicRecycleView();
+        initProRecycleView();
+
     }
 
-    private void initRecycleView() {
+    private void initTopRecycleView() {
         final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         mRVCourseTop.setLayoutManager(layoutManager);
         mTopCourseAdapter = new CourseListAdapter(this, mTopCourse);
         mRVCourseTop.setAdapter(mTopCourseAdapter);
     }
 
-//    private void initBasicRecycleView() {
-//        final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
-//        mRVCourseBasic.setLayoutManager(layoutManager);
-//        mTopCourseAdapter = new CourseListAdapter(this, mBasicCourse);
-//        mRVCourseTop.setAdapter(mTopCourseAdapter);
-//
-//    }
-//
-//    private void initProRecycleView() {
-//        final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
-//        mRVCourseTop.setLayoutManager(layoutManager);
-//        mTopCourseAdapter = new CourseListAdapter(this, mProCourse);
-//        mRVCourseTop.setAdapter(mTopCourseAdapter);
-//
-//    }
+
+    private void initBasicRecycleView() {
+        final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+        mRVCourseBasic.setLayoutManager(layoutManager);
+        mBasicCourseAdapter = new CourseListAdapter(this, mBasicCourse);
+        mRVCourseBasic.setAdapter(mBasicCourseAdapter);
+
+    }
+
+    private void initProRecycleView() {
+        final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+        mRVCoursePro.setLayoutManager(layoutManager);
+        mProCourseAdapter = new CourseListAdapter(this, mProCourse);
+        mRVCoursePro.setAdapter(mProCourseAdapter);
+
+    }
 
 
 }
