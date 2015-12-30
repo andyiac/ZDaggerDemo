@@ -1,5 +1,6 @@
 package com.andyiac.zdaggerdemo.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -35,18 +36,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         apiService = ApiClient.getApiClient();
-
-        mBtnTest = (Button) findViewById(R.id.btn_test);
-        mBtnTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickGetCourseIndex();
-            }
-        });
     }
 
 
-    private void onClickGetCourseIndex() {
+    public void onClickGetCourseIndex(View view) {
 
         AppObservable.bindActivity(this, apiService.getCourseIndex())
                 .map(new Func1<Course, Course>() {
@@ -216,4 +209,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void onClickCourseActivity(View view) {
+        Intent intent = new Intent(this, StartUpCourseMainActivity.class);
+        startActivity(intent);
+    }
 }

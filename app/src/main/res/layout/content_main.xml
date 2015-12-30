@@ -14,40 +14,48 @@
 
 
     <Button
-        android:id="@+id/btn_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="test btn" />
+        android:onClick="onClickGetCourseIndex"
+        android:text="on click course index" />
+
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickGetCourseTypes"
-        android:text="getCourseType" />
+        android:text="get Course Type" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickGetAllCourses"
-        android:text="onClickGetAllCourses" />
+        android:text="on Click Get All Courses" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickGetCourseDetails"
-        android:text="onClickGetCourseDetails" />
+        android:text="onClick Get Course Details" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickCourseLikeCount"
-        android:text="onClickCourseLikeCount" />
+        android:text="onClick Course Like Count" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickGetCourseBanners"
-        android:text="onClickGetCourseBanners" />
+        android:text="onClick Get Course Banners" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickCourseActivity"
+        android:text="onClick Course Activity" />
 
 
 </LinearLayout>
