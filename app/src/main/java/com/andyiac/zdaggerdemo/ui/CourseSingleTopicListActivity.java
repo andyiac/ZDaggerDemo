@@ -45,7 +45,7 @@ public class CourseSingleTopicListActivity extends AppCompatActivity {
         apiService = ApiClient.getApiClient();
 
         Intent intent = getIntent();
-        whichCategory = intent.getIntExtra("category", 0);
+        whichCategory = intent.getIntExtra("category", -1);
 
         initView();
         getAllCourses();
@@ -77,7 +77,7 @@ public class CourseSingleTopicListActivity extends AppCompatActivity {
     }
 
     private void getAllCourses() {
-        AppObservable.bindActivity(this, apiService.getAllCourses(1, 10, whichCategory))
+        AppObservable.bindActivity(this, apiService.getAllCourses(1, 50, whichCategory))
                 .map(new Func1<AllCourses, AllCourses>() {
                     @Override
                     public AllCourses call(AllCourses allCourses) {

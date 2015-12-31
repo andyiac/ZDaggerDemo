@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.alibaba.fastjson.JSON;
@@ -61,6 +63,22 @@ public class CourseAllListActivity extends AppCompatActivity {
         mGlProCourse = (GridView) findViewById(R.id.gl_course_all_pro);
         mGlBasicCourse.setAdapter(basicCourseAdapter);
         mGlProCourse.setAdapter(proCourseAdapter);
+
+        mGlBasicCourse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Logger.e(mBasicCourse.get(position).getType()+"");
+                CourseSingleTopicListActivity.startIntent(CourseAllListActivity.this, mBasicCourse.get(position).getType());
+            }
+        });
+
+        mGlProCourse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CourseSingleTopicListActivity.startIntent(CourseAllListActivity.this, mProCourse.get(position).getType());
+            }
+        });
+
     }
 
     private void initData() {
