@@ -30,6 +30,7 @@
             android:stretchMode="columnWidth" />
 
         <GridView
+            android:clickable="true"
             android:id="@+id/id_gv_course_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

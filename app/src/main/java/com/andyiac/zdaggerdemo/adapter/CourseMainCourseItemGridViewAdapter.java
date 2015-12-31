@@ -33,7 +33,6 @@ public class CourseMainCourseItemGridViewAdapter extends BaseAdapter {
     }
 
     @Override
-
     public int getCount() {
         return dataList.size();
     }
@@ -49,7 +48,7 @@ public class CourseMainCourseItemGridViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         convertView = inflater.inflate(R.layout.course_main_item, null);
         ImageView courseImage = (ImageView) convertView.findViewById(R.id.iv_course_item_img);
         TextView courseTitle = (TextView) convertView.findViewById(R.id.tv_course_item_title);
@@ -60,6 +59,28 @@ public class CourseMainCourseItemGridViewAdapter extends BaseAdapter {
         courseTitle.setText(dataList.get(position).getTitle());
         courseAuthor.setText(dataList.get(position).getTeacher().getName());
         courseAuthorWork.setText(dataList.get(position).getTeacher().getWork());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onCourseItemClickInterface.onClick(dataList.get(position).getUid());
+            }
+        });
         return convertView;
     }
+
+    public interface OnCourseItemClickInterface {
+        void onClick(int course_id);
+    }
+
+    private OnCourseItemClickInterface onCourseItemClickInterface;
+
+
+    public void setOnCourseItemClickListener(OnCourseItemClickInterface onCourseItemClickInterface) {
+        this.onCourseItemClickInterface = onCourseItemClickInterface;
+
+    }
+
+
 }

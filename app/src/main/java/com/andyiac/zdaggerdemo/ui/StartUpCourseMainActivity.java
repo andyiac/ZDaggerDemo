@@ -219,14 +219,25 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
             }
         });
 
-        mGVCourseTop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mTopCourseAdapter.setOnCourseItemClickListener(new CourseMainCourseItemGridViewAdapter.OnCourseItemClickInterface() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            public void onClick(int course_id) {
                 CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this);
             }
         });
 
+        mBasicCourseAdapter.setOnCourseItemClickListener(new CourseMainCourseItemGridViewAdapter.OnCourseItemClickInterface() {
+            @Override
+            public void onClick(int course_id) {
+                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this);
+            }
+        });
+        mProCourseAdapter.setOnCourseItemClickListener(new CourseMainCourseItemGridViewAdapter.OnCourseItemClickInterface() {
+            @Override
+            public void onClick(int course_id) {
+                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this);
+            }
+        });
 
     }
 
