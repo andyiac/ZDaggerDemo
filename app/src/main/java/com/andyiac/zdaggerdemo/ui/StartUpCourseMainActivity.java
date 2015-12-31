@@ -5,10 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.GridView;
 
 import com.alibaba.fastjson.JSON;
 import com.andyiac.zdaggerdemo.R;
 import com.andyiac.zdaggerdemo.adapter.CourseListAdapter;
+import com.andyiac.zdaggerdemo.adapter.CourseMainCourseItemGridViewAdapter;
 import com.andyiac.zdaggerdemo.api.ApiClient;
 import com.andyiac.zdaggerdemo.data.Course;
 import com.andyiac.zdaggerdemo.data.CourseBanners;
@@ -29,14 +31,14 @@ import rx.functions.Func1;
  */
 public class StartUpCourseMainActivity extends AppCompatActivity {
 
-    private RecyclerView mRVCourseTop, mRVCourseBasic, mRVCoursePro;
+    private GridView mRVCourseTop, mRVCourseBasic, mRVCoursePro;
     private List<Course.CourseEntity> mTopCourse = new ArrayList<>();
     private List<Course.CourseEntity> mBasicCourse = new ArrayList<>();
     private List<Course.CourseEntity> mProCourse = new ArrayList<>();
 
-    private CourseListAdapter mTopCourseAdapter;
-    private CourseListAdapter mBasicCourseAdapter;
-    private CourseListAdapter mProCourseAdapter;
+    private CourseMainCourseItemGridViewAdapter mTopCourseAdapter;
+    private CourseMainCourseItemGridViewAdapter mBasicCourseAdapter;
+    private CourseMainCourseItemGridViewAdapter mProCourseAdapter;
 
     private ApiClient.ApiServiceInterface apiService;
 
@@ -125,38 +127,17 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
 
 
     private void initView() {
-        mRVCourseTop = (RecyclerView) findViewById(R.id.id_rv_course_top);
-        mRVCourseBasic = (RecyclerView) findViewById(R.id.id_rv_course_basic);
-        mRVCoursePro = (RecyclerView) findViewById(R.id.id_rv_course_pro);
+        mRVCourseTop = (GridView) findViewById(R.id.id_gv_course_top);
+        mRVCourseBasic = (GridView) findViewById(R.id.id_gv_course_basic);
+        mRVCoursePro = (GridView) findViewById(R.id.id_gv_course_pro);
 
-        initTopRecycleView();
-        initBasicRecycleView();
-        initProRecycleView();
+        mTopCourseAdapter = new CourseMainCourseItemGridViewAdapter(this, mTopCourse);
+        mBasicCourseAdapter = new CourseMainCourseItemGridViewAdapter(this, mBasicCourse);
+        mProCourseAdapter = new CourseMainCourseItemGridViewAdapter(this, mProCourse);
 
-    }
-
-    private void initTopRecycleView() {
-        final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
-        mRVCourseTop.setLayoutManager(layoutManager);
-        mTopCourseAdapter = new CourseListAdapter(this, mTopCourse);
         mRVCourseTop.setAdapter(mTopCourseAdapter);
-    }
-
-
-    private void initBasicRecycleView() {
-        final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
-        mRVCourseBasic.setLayoutManager(layoutManager);
-        mBasicCourseAdapter = new CourseListAdapter(this, mBasicCourse);
         mRVCourseBasic.setAdapter(mBasicCourseAdapter);
-
-    }
-
-    private void initProRecycleView() {
-        final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
-        mRVCoursePro.setLayoutManager(layoutManager);
-        mProCourseAdapter = new CourseListAdapter(this, mProCourse);
         mRVCoursePro.setAdapter(mProCourseAdapter);
-
     }
 
 
