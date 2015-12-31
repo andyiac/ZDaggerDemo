@@ -222,20 +222,20 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
         mTopCourseAdapter.setOnCourseItemClickListener(new CourseMainCourseItemGridViewAdapter.OnCourseItemClickInterface() {
             @Override
             public void onClick(int course_id) {
-                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this);
+                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this,course_id);
             }
         });
 
         mBasicCourseAdapter.setOnCourseItemClickListener(new CourseMainCourseItemGridViewAdapter.OnCourseItemClickInterface() {
             @Override
             public void onClick(int course_id) {
-                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this);
+                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this,course_id);
             }
         });
         mProCourseAdapter.setOnCourseItemClickListener(new CourseMainCourseItemGridViewAdapter.OnCourseItemClickInterface() {
             @Override
             public void onClick(int course_id) {
-                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this);
+                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this,course_id);
             }
         });
 
