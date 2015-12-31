@@ -1,5 +1,7 @@
 package com.andyiac.zdaggerdemo.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -33,13 +35,27 @@ public class CourseSingleTopicListActivity extends AppCompatActivity {
     private CourseSingleTopicListAdapter mAdapter;
     private List<AllCourses.DataEntity> courses = new ArrayList<>();
 
+    private int whichCategory;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.course_single_topic_list_activity);
         apiService = ApiClient.getApiClient();
+
+        Intent intent = getIntent();
+        whichCategory = intent.getIntExtra("category", 0);
+
         initView();
         getAllCourses();
+    }
+
+    public static void startIntent(Context context, int courseCategory) {
+
+        Intent intent = new Intent();
+        intent.putExtra("category", courseCategory);
+        intent.setClass(context, CourseSingleTopicListActivity.class);
+        context.startActivity(intent);
     }
 
     private void initView() {
@@ -51,7 +67,7 @@ public class CourseSingleTopicListActivity extends AppCompatActivity {
     }
 
     private void getAllCourses() {
-        AppObservable.bindActivity(this, apiService.getAllCourses(1, 10, 1))
+        AppObservable.bindActivity(this, apiService.getAllCourses(1, 10, whichCategory))
                 .map(new Func1<AllCourses, AllCourses>() {
                     @Override
                     public AllCourses call(AllCourses allCourses) {

@@ -1,5 +1,7 @@
 package com.andyiac.zdaggerdemo.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -44,6 +46,12 @@ public class CourseAllListActivity extends AppCompatActivity {
 
         initView();
         initData();
+    }
+
+    public static void startIntent(Context context) {
+        Intent intent = new Intent();
+        intent.setClass(context, CourseAllListActivity.class);
+        context.startActivity(intent);
     }
 
     private void initView() {
@@ -92,6 +100,7 @@ public class CourseAllListActivity extends AppCompatActivity {
 
 
     }
+
 
 }
 

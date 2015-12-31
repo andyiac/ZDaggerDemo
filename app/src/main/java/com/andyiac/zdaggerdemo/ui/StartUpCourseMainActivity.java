@@ -3,6 +3,8 @@ package com.andyiac.zdaggerdemo.ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.alibaba.fastjson.JSON;
@@ -201,6 +203,23 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
         mRVCourseTop.setAdapter(mTopCourseAdapter);
         mRVCourseBasic.setAdapter(mBasicCourseAdapter);
         mRVCoursePro.setAdapter(mProCourseAdapter);
+
+
+        // set up on click event
+        mGVCourseCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 7) {
+                    // more category
+                    CourseAllListActivity.startIntent(StartUpCourseMainActivity.this);
+                } else {
+                    CourseSingleTopicListActivity.startIntent(StartUpCourseMainActivity.this, position + 1);
+                }
+            }
+        });
+
+
+
 
     }
 
