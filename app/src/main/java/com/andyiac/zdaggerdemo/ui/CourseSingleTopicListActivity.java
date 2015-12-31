@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 
 import com.alibaba.fastjson.JSON;
 import com.andyiac.zdaggerdemo.R;
@@ -64,6 +65,15 @@ public class CourseSingleTopicListActivity extends AppCompatActivity {
         mRecycleView.setLayoutManager(manager);
         mAdapter = new CourseSingleTopicListAdapter(this, courses);
         mRecycleView.setAdapter(mAdapter);
+
+        mAdapter.setOnICourseItemClickListener(new CourseSingleTopicListAdapter.ICourseItemClickListener() {
+            @Override
+            public void onClick(int course_id) {
+                CourseDetailsActivity.startIntent(CourseSingleTopicListActivity.this, course_id);
+            }
+        });
+
+
     }
 
     private void getAllCourses() {
