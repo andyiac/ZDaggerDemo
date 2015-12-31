@@ -14,7 +14,6 @@ import com.andyiac.zdaggerdemo.adapter.CourseMainCourseItemGridViewAdapter;
 import com.andyiac.zdaggerdemo.api.ApiClient;
 import com.andyiac.zdaggerdemo.data.Course;
 import com.andyiac.zdaggerdemo.data.CourseBanners;
-import com.andyiac.zdaggerdemo.data.CourseDetails;
 import com.andyiac.zdaggerdemo.ui.misc.NetworkImageHolderView;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
@@ -54,6 +53,7 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
     private CourseMainCourseItemGridViewAdapter mProCourseAdapter;
 
     private ApiClient.ApiServiceInterface apiService;
+    private CourseBanners mCourseBannerData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -136,7 +136,10 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
                     public void onNext(CourseBanners courseBanners) {
                         Logger.json(JSON.toJSONString(courseBanners));
 
+                        mCourseBannerData = courseBanners;
                         for (CourseBanners.DataEntity entity : courseBanners.getData()) {
+
+                            Logger.e(entity.getPhoto());
                             bannerImages.add(entity.getPhoto());
                         }
 
@@ -222,20 +225,20 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
         mTopCourseAdapter.setOnCourseItemClickListener(new CourseMainCourseItemGridViewAdapter.OnCourseItemClickInterface() {
             @Override
             public void onClick(int course_id) {
-                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this,course_id);
+                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this, course_id);
             }
         });
 
         mBasicCourseAdapter.setOnCourseItemClickListener(new CourseMainCourseItemGridViewAdapter.OnCourseItemClickInterface() {
             @Override
             public void onClick(int course_id) {
-                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this,course_id);
+                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this, course_id);
             }
         });
         mProCourseAdapter.setOnCourseItemClickListener(new CourseMainCourseItemGridViewAdapter.OnCourseItemClickInterface() {
             @Override
             public void onClick(int course_id) {
-                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this,course_id);
+                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this, course_id);
             }
         });
 
@@ -243,16 +246,26 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
 
     private void setUpBanner(List<String> images) {
 
-        mBanner.setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
+        final NetworkImageHolderView holderView = new NetworkImageHolderView();
+
+        mBanner.setPages(new CBViewHolderCreator() {
             @Override
-            public NetworkImageHolderView createHolder() {
-                return new NetworkImageHolderView();
+            public Object createHolder() {
+                return holderView;
             }
         }, images == null ? bannerImages : images);
-
         mBanner.setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
         mBanner.setPageIndicator(new int[]{R.drawable.ic_page_indicator, R.drawable.ic_page_indicator_focused});
         if (images != null && images.size() > 1) mBanner.startTurning(5000);
+
+        holderView.setOnImageClickListener(new NetworkImageHolderView.OnImageClickListener() {
+            @Override
+            public void onClick(int position) {
+                Logger.e(mCourseBannerData.getData().get(position).getUid() + "");
+                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this, mCourseBannerData.getData().get(position).getUid());
+            }
+        });
+
     }
 
 

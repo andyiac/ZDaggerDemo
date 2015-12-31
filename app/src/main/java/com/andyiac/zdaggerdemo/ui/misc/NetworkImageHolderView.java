@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.andyiac.zdaggerdemo.R;
+import com.andyiac.zdaggerdemo.ui.CourseDetailsActivity;
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -14,6 +15,18 @@ import com.nostra13.universalimageloader.core.ImageLoader;
  */
 public class NetworkImageHolderView implements Holder<String> {
     private ImageView imageView;
+
+    public interface OnImageClickListener {
+        void onClick(int position);
+    }
+
+    private OnImageClickListener onImageClickListener;
+
+    public void setOnImageClickListener(OnImageClickListener listener) {
+        this.onImageClickListener = listener;
+    }
+
+
     @Override
     public View createView(Context context) {
         //你可以通过layout文件来创建，也可以像我一样用代码创建，不一定是Image，任何控件都可以进行翻页
@@ -23,8 +36,14 @@ public class NetworkImageHolderView implements Holder<String> {
     }
 
     @Override
-    public void UpdateUI(Context context, int position, String data) {
+    public void UpdateUI(final Context context, final int position, String data) {
         imageView.setImageResource(R.drawable.ic_default_adimage);
-        ImageLoader.getInstance().displayImage(data,imageView);
+        ImageLoader.getInstance().displayImage(data, imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onImageClickListener.onClick(position);
+            }
+        });
     }
 }
