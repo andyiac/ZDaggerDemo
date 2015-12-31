@@ -45,7 +45,6 @@ public class ClientApplication extends Application {
     private void initUIL() {
 
 
-
         //显示图片的配置
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
@@ -71,7 +70,7 @@ public class ClientApplication extends Application {
                 .diskCacheFileNameGenerator(new HashCodeFileNameGenerator()) // default
                 .imageDownloader(new BaseImageDownloader(context)) // default
                 .imageDecoder(new BaseImageDecoder(false)) // default
-                .defaultDisplayImageOptions(DisplayImageOptions.createSimple()) // default
+                .defaultDisplayImageOptions(options)
                 .writeDebugLogs()
                 .build();
         ImageLoader.getInstance().init(config);
