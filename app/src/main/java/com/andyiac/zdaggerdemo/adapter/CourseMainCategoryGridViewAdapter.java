@@ -3,6 +3,7 @@ package com.andyiac.zdaggerdemo.adapter;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,6 @@ public class CourseMainCategoryGridViewAdapter extends BaseAdapter {
         return position;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = inflater.inflate(R.layout.course_main_categroy_grid_item, null);
@@ -57,7 +57,7 @@ public class CourseMainCategoryGridViewAdapter extends BaseAdapter {
 
         int resId = Integer.valueOf(data.get(position).get("img").toString());
 
-        imageView.setImageDrawable(context.getDrawable(resId));
+        imageView.setImageDrawable(ContextCompat.getDrawable(context, resId));
         textView.setText(data.get(position).get("name").toString());
         return convertView;
     }
