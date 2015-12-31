@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSON;
 import com.andyiac.zdaggerdemo.R;
 import com.andyiac.zdaggerdemo.data.AllCourses;
 import com.andyiac.zdaggerdemo.data.Course;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.orhanobut.logger.Logger;
 
 import java.util.List;
@@ -48,6 +49,7 @@ public class CourseSingleTopicListAdapter extends RecyclerView.Adapter<CourseSin
         holder.mTvTitle.setText(course.getTitle());
         holder.mTvAuthor.setText(course.getTeacher().getName());
         holder.mTvAuthorWork.setText(course.getTeacher().getWork());
+        ImageLoader.getInstance().displayImage(mListData.get(position).getPhoto(), holder.mImageView);
     }
 
     @Override
