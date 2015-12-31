@@ -206,8 +206,6 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
 
     private void setUpBanner(List<String> images) {
 
-
-        Logger.i(bannerImages.toString());
         mBanner.setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
             @Override
             public NetworkImageHolderView createHolder() {
@@ -217,7 +215,7 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
 
         mBanner.setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
         mBanner.setPageIndicator(new int[]{R.drawable.ic_page_indicator, R.drawable.ic_page_indicator_focused});
-        mBanner.startTurning(5000);
+        if (images != null && images.size() > 1) mBanner.startTurning(5000);
     }
 
 
