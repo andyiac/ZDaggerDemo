@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.andyiac.zdaggerdemo.R;
 import com.andyiac.zdaggerdemo.data.Course;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.orhanobut.logger.Logger;
 
 import java.util.List;
@@ -43,11 +44,10 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         Course.CourseEntity course = mListData.get(position);
-        Logger.e("=======");
-        Logger.json(JSON.toJSONString(course));
         holder.mTvTitle.setText(course.getTitle());
         holder.mTvAuthor.setText(course.getTeacher().getName());
         holder.mTvAuthorWork.setText(course.getTeacher().getWork());
+        ImageLoader.getInstance().displayImage(course.getPhoto(), holder.mImageView);
     }
 
     @Override

@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andyiac.zdaggerdemo.R;
 import com.andyiac.zdaggerdemo.data.Course;
 import com.andyiac.zdaggerdemo.data.CourseType;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
@@ -49,9 +51,12 @@ public class CourseMainCourseItemGridViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = inflater.inflate(R.layout.course_main_item, null);
+        ImageView courseImage = (ImageView) convertView.findViewById(R.id.iv_course_item_img);
         TextView courseTitle = (TextView) convertView.findViewById(R.id.tv_course_item_title);
         TextView courseAuthor = (TextView) convertView.findViewById(R.id.tv_course_item_author);
         TextView courseAuthorWork = (TextView) convertView.findViewById(R.id.tv_course_item_author_work);
+
+        ImageLoader.getInstance().displayImage(dataList.get(position).getPhoto(), courseImage);
         courseTitle.setText(dataList.get(position).getTitle());
         courseAuthor.setText(dataList.get(position).getTeacher().getName());
         courseAuthorWork.setText(dataList.get(position).getTeacher().getWork());
