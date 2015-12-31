@@ -16,52 +16,10 @@
             android:background="#ff76a0" />
 
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="4"
-            android:rowCount="2"
-            android:visibility="gone">
-
-            <TextView
-                android:drawableTop="@mipmap/course_1"
-                android:text="财务" />
-
-            <TextView
-                android:drawableTop="@mipmap/course_1"
-                android:text="财务" />
-
-            <TextView
-                android:drawableTop="@mipmap/course_1"
-                android:text="财务" />
-
-            <TextView
-                android:drawableTop="@mipmap/course_1"
-                android:text="财务" />
-
-            <TextView
-                android:drawableTop="@mipmap/course_1"
-                android:text="财务" />
-
-            <TextView
-                android:drawableTop="@mipmap/course_1"
-                android:text="财务" />
-
-            <TextView
-                android:drawableTop="@mipmap/course_1"
-                android:text="财务" />
-
-            <TextView
-                android:drawableTop="@mipmap/course_1"
-                android:text="财务" />
-
-
-        </GridLayout>
-
         <GridView
             android:id="@+id/id_gv_course_category"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
             android:columnWidth="90dp"
             android:gravity="center"
             android:listSelector="@android:color/transparent"
@@ -72,7 +30,7 @@
             android:id="@+id/id_gv_course_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnWidth="90dp"
+            android:columnWidth="160dp"
             android:gravity="center"
             android:listSelector="@android:color/transparent"
             android:numColumns="auto_fit"
@@ -129,7 +87,7 @@
             android:id="@+id/id_gv_course_basic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnWidth="90dp"
+            android:columnWidth="160dp"
             android:gravity="center"
             android:listSelector="@android:color/transparent"
             android:numColumns="auto_fit"
@@ -185,12 +143,11 @@
             android:id="@+id/id_gv_course_pro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnWidth="90dp"
+            android:columnWidth="160dp"
             android:gravity="center"
             android:listSelector="@android:color/transparent"
             android:numColumns="auto_fit"
             android:stretchMode="columnWidth" />
-
 
     </LinearLayout>
 
