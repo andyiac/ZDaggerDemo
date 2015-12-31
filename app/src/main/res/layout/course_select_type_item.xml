@@ -8,6 +8,9 @@
     <TextView
         android:id="@+id/id_tv_item_course_type"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="融资"
+        android:textSize="16sp" />
 
 </LinearLayout>
