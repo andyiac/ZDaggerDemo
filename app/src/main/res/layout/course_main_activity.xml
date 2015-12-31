@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="145dp"
             android:background="@android:color/white"
-            android:columnWidth="90dp"
+            android:columnWidth="80dp"
             android:gravity="center"
             android:listSelector="@android:color/transparent"
             android:numColumns="auto_fit"
