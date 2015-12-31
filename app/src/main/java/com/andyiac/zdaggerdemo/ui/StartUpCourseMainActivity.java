@@ -38,14 +38,14 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
 
     private ConvenientBanner mBanner;
     private GridView mGVCourseCategory;
-    private GridView mRVCourseTop, mRVCourseBasic, mRVCoursePro;
+    private GridView mGVCourseTop, mRVCourseBasic, mRVCoursePro;
 
     private List<String> bannerImages = new ArrayList<>();
 
     private List<Map<String, Object>> mCourseCategories = new ArrayList<>();
-    private List<Course.CourseEntity> mTopCourse = new ArrayList<>();
-    private List<Course.CourseEntity> mBasicCourse = new ArrayList<>();
-    private List<Course.CourseEntity> mProCourse = new ArrayList<>();
+    private List<Course.CourseEntity> mTopCourseList = new ArrayList<>();
+    private List<Course.CourseEntity> mBasicCourseList = new ArrayList<>();
+    private List<Course.CourseEntity> mProCourseList = new ArrayList<>();
 
     private CourseMainCategoryGridViewAdapter mCourseCategoryAdapter;
     private CourseMainCourseItemGridViewAdapter mTopCourseAdapter;
@@ -168,13 +168,13 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
                     public void onNext(Course course) {
 
                         Logger.json(JSON.toJSONString(course));
-                        mTopCourse.addAll(course.getData().getTop().getCourse());
+                        mTopCourseList.addAll(course.getData().getTop().getCourse());
                         mTopCourseAdapter.notifyDataSetChanged();
 
-                        mBasicCourse.addAll(course.getData().getBasic().getCourse());
+                        mBasicCourseList.addAll(course.getData().getBasic().getCourse());
                         mBasicCourseAdapter.notifyDataSetChanged();
 
-                        mProCourse.addAll(course.getData().getPro().getCourse());
+                        mProCourseList.addAll(course.getData().getPro().getCourse());
                         mProCourseAdapter.notifyDataSetChanged();
 
                     }
@@ -192,15 +192,15 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
         mGVCourseCategory.setAdapter(mCourseCategoryAdapter);
 
 
-        mRVCourseTop = (GridView) findViewById(R.id.id_gv_course_top);
+        mGVCourseTop = (GridView) findViewById(R.id.id_gv_course_top);
         mRVCourseBasic = (GridView) findViewById(R.id.id_gv_course_basic);
         mRVCoursePro = (GridView) findViewById(R.id.id_gv_course_pro);
 
-        mTopCourseAdapter = new CourseMainCourseItemGridViewAdapter(this, mTopCourse);
-        mBasicCourseAdapter = new CourseMainCourseItemGridViewAdapter(this, mBasicCourse);
-        mProCourseAdapter = new CourseMainCourseItemGridViewAdapter(this, mProCourse);
+        mTopCourseAdapter = new CourseMainCourseItemGridViewAdapter(this, mTopCourseList);
+        mBasicCourseAdapter = new CourseMainCourseItemGridViewAdapter(this, mBasicCourseList);
+        mProCourseAdapter = new CourseMainCourseItemGridViewAdapter(this, mProCourseList);
 
-        mRVCourseTop.setAdapter(mTopCourseAdapter);
+        mGVCourseTop.setAdapter(mTopCourseAdapter);
         mRVCourseBasic.setAdapter(mBasicCourseAdapter);
         mRVCoursePro.setAdapter(mProCourseAdapter);
 
@@ -218,7 +218,12 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
             }
         });
 
-
+        mGVCourseTop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // todo
+            }
+        });
 
 
     }
