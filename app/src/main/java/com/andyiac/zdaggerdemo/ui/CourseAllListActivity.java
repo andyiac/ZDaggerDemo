@@ -30,8 +30,10 @@ public class CourseAllListActivity extends AppCompatActivity {
     ApiClient.ApiServiceInterface apiService;
     private GridView mGlBasicCourse, mGlProCourse;
     private CourseAllListGridViewAdapter basicCourseAdapter;
+    private CourseAllListGridViewAdapter proCourseAdapter;
 
     private List<CourseType.TypeEntity> mBasicCourse = new ArrayList<>();
+    private List<CourseType.TypeEntity> mProCourse = new ArrayList<>();
 
 
     @Override
@@ -46,8 +48,11 @@ public class CourseAllListActivity extends AppCompatActivity {
 
     private void initView() {
         basicCourseAdapter = new CourseAllListGridViewAdapter(this, mBasicCourse);
+        proCourseAdapter = new CourseAllListGridViewAdapter(this, mProCourse);
         mGlBasicCourse = (GridView) findViewById(R.id.gl_course_all_basic);
+        mGlProCourse = (GridView) findViewById(R.id.gl_course_all_pro);
         mGlBasicCourse.setAdapter(basicCourseAdapter);
+        mGlProCourse.setAdapter(proCourseAdapter);
     }
 
     private void initData() {
@@ -75,8 +80,12 @@ public class CourseAllListActivity extends AppCompatActivity {
                     public void onNext(CourseType courseType) {
                         Logger.json(JSON.toJSONString(courseType));
 
-                        mBasicCourse.addAll(courseType.getData().getAll());
+                        mBasicCourse.addAll(courseType.getData().getType_basic());
                         basicCourseAdapter.notifyDataSetChanged();
+
+                        mProCourse.addAll(courseType.getData().getType_pro());
+                        proCourseAdapter.notifyDataSetChanged();
+
 
                     }
                 });
