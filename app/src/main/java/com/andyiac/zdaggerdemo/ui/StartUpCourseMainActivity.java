@@ -53,8 +53,8 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        getCourseIndex();
         getCourseBanners();
+        getCourseIndex();
     }
 
 
