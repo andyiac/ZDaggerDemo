@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical">
+
+    <VideoView
+        android:id="@+id/id_vv_course_details_video"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="要把百度的智能,大脑带到更多设备上"
+        android:textColor="@android:color/black"
+        android:textSize="22sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="200人看过" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="200评论" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="200人点赞" />
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/id_course_details_author_avatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="12dp"
+            android:background="#ff76a0" />
+
+        <TextView
+            android:id="@+id/id_course_details_author_name"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/id_course_details_author_avatar"
+            android:gravity="bottom"
+            android:text="李晶"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/id_course_details_author_work"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignLeft="@id/id_course_details_author_name"
+            android:layout_below="@id/id_course_details_author_name"
+            android:gravity="center_vertical"
+            android:text="小饭桌CEO" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/id_course_details_author_avatar"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="6dp"
+            android:padding="10dp"
+            android:text="课程简程简程简程简程简程简程简程简程简程简程简程简程简程简程简程简程简程简介" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="课程简介" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="6dp"
+            android:padding="10dp"
+            android:text="课程简程简程简程简程简程简程简程简程简程简程简程简程简程简程简程简程简程简介" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

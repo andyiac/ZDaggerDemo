@@ -14,6 +14,7 @@ import com.andyiac.zdaggerdemo.adapter.CourseMainCourseItemGridViewAdapter;
 import com.andyiac.zdaggerdemo.api.ApiClient;
 import com.andyiac.zdaggerdemo.data.Course;
 import com.andyiac.zdaggerdemo.data.CourseBanners;
+import com.andyiac.zdaggerdemo.data.CourseDetails;
 import com.andyiac.zdaggerdemo.ui.misc.NetworkImageHolderView;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
@@ -221,7 +222,8 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
         mGVCourseTop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // todo
+
+                CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this);
             }
         });
 
