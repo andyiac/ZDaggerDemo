@@ -14,9 +14,9 @@ buildscript {
 
 allprojects {
     repositories {
-//        jcenter()
+        jcenter()
         //http://www.yrom.net/blog/2015/02/07/change-gradle-maven-repo-url/
-        maven{ url 'http://maven.oschina.net/content/groups/public/'}
+//        maven{ url 'http://maven.oschina.net/content/groups/public/'}
 
     }
 }

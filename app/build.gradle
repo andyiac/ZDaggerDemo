@@ -35,6 +35,7 @@ dependencies {
     compile 'com.orhanobut:logger:1.10'
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+    compile 'com.bigkoo:convenientbanner:2.0.2'
 
     compile files('libs/fastjson-1.2.6.jar')
 }

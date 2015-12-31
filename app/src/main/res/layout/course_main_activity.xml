@@ -10,10 +10,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
+        <com.bigkoo.convenientbanner.ConvenientBanner
+            android:id="@+id/id_course_main_banner"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#ff76a0" />
+            android:layout_height="120dp"
+            android:background="#5ed3cd" />
 
 
         <GridView

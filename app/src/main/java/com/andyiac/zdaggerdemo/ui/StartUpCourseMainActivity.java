@@ -12,7 +12,9 @@ import com.andyiac.zdaggerdemo.adapter.CourseMainCourseItemGridViewAdapter;
 import com.andyiac.zdaggerdemo.api.ApiClient;
 import com.andyiac.zdaggerdemo.data.Course;
 import com.andyiac.zdaggerdemo.data.CourseBanners;
-import com.andyiac.zdaggerdemo.data.CourseType;
+import com.andyiac.zdaggerdemo.ui.misc.NetworkImageHolderView;
+import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
@@ -32,8 +34,11 @@ import rx.functions.Func1;
  */
 public class StartUpCourseMainActivity extends AppCompatActivity {
 
+    private ConvenientBanner mBanner;
     private GridView mGVCourseCategory;
     private GridView mRVCourseTop, mRVCourseBasic, mRVCoursePro;
+
+    private List<String> bannerImages = new ArrayList<>();
 
     private List<Map<String, Object>> mCourseCategories = new ArrayList<>();
     private List<Course.CourseEntity> mTopCourse = new ArrayList<>();
@@ -128,6 +133,11 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
                     public void onNext(CourseBanners courseBanners) {
                         Logger.json(JSON.toJSONString(courseBanners));
 
+                        for (CourseBanners.DataEntity entity : courseBanners.getData()) {
+                            bannerImages.add(entity.getPhoto());
+                        }
+
+                        setUpBanner(bannerImages);
                     }
                 });
     }
@@ -171,6 +181,9 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
 
 
     private void initView() {
+        mBanner = (ConvenientBanner) findViewById(R.id.id_course_main_banner);
+
+        setUpBanner(null);
 
         mGVCourseCategory = (GridView) findViewById(R.id.id_gv_course_category);
         mCourseCategoryAdapter = new CourseMainCategoryGridViewAdapter(this, mCourseCategories);
@@ -188,7 +201,25 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
         mRVCourseTop.setAdapter(mTopCourseAdapter);
         mRVCourseBasic.setAdapter(mBasicCourseAdapter);
         mRVCoursePro.setAdapter(mProCourseAdapter);
+
+    }
+
+    private void setUpBanner(List<String> images) {
+
+
+        Logger.i(bannerImages.toString());
+        mBanner.setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
+            @Override
+            public NetworkImageHolderView createHolder() {
+                return new NetworkImageHolderView();
+            }
+        }, images == null ? bannerImages : images);
+
+        mBanner.setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
+        mBanner.setPageIndicator(new int[]{R.drawable.ic_page_indicator, R.drawable.ic_page_indicator_focused});
+        mBanner.startTurning(5000);
     }
 
 
 }
+
