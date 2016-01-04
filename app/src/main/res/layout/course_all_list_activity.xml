@@ -16,11 +16,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="25dp"
             android:drawableLeft="@mipmap/course_basic_icon"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:text="创业必修课"
+            android:textColor="#565656"
             android:textStyle="bold" />
 
 
@@ -51,11 +52,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="25dp"
             android:drawableLeft="@mipmap/course_pro_icon"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:text="创业进阶课"
+            android:textColor="#565656"
             android:textStyle="bold" />
 
 
