@@ -1,6 +1,7 @@
 package com.andyiac.zdaggerdemo.ui;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -276,6 +277,49 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
             params.rightMargin = (int) px;
 
             mLLProCourseBar.addView(tv, params);
+        }
+
+
+        { // special for find more
+
+            TextView tv = new TextView(this);
+            tv.setText("更多");
+
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CourseAllListActivity.startIntent(StartUpCourseMainActivity.this);
+                }
+            });
+
+
+            TextView tv2 = new TextView(this);
+            tv2.setText("更多");
+
+            tv2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CourseAllListActivity.startIntent(StartUpCourseMainActivity.this);
+                }
+            });
+
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+            tv.setGravity(Gravity.CENTER);
+            tv2.setGravity(Gravity.CENTER);
+
+            tv.setTextColor(0xff6d85a3);
+            tv2.setTextColor(0xff6d85a3);
+            Resources r = getResources();
+            float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, r.getDisplayMetrics());
+            params.leftMargin = (int) px;
+            params.rightMargin = (int) px;
+
+            mLLProCourseBar.addView(tv, params);
+            mLLBasicCourseBar.addView(tv2, params);
+
         }
     }
 
