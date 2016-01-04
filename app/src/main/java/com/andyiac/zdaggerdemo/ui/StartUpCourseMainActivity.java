@@ -14,6 +14,7 @@ import com.andyiac.zdaggerdemo.adapter.CourseMainCourseItemGridViewAdapter;
 import com.andyiac.zdaggerdemo.api.ApiClient;
 import com.andyiac.zdaggerdemo.data.Course;
 import com.andyiac.zdaggerdemo.data.CourseBanners;
+import com.andyiac.zdaggerdemo.data.CourseType;
 import com.andyiac.zdaggerdemo.ui.misc.NetworkImageHolderView;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
@@ -69,9 +70,41 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
 
     private void initData() {
         getCourseBanners();
-        getCourseCategories();
+//        getCourseCategories();
+        getCourseCategories2();
         getCourseIndex();
 
+    }
+
+    private void getCourseCategories2() {
+        AppObservable.bindActivity(this, apiService.getCourseTypes())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CourseType>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(CourseType courseType) {
+
+                        for (int i = 0; i < 7; i++) {
+                            Map<String, Object> category = new HashMap<>();
+                            courseType.getData().getAll().get(i).getName();
+                            category.put("img", R.mipmap.course_1);
+                            category.put("name", courseType.getData().getAll().get(i).getName());
+                            mCourseCategories.add(category);
+                        }
+                        mCourseCategoryAdapter.notifyDataSetChanged();
+
+
+                    }
+                });
     }
 
     private void getCourseCategories() {

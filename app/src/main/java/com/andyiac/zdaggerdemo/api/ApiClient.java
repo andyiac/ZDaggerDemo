@@ -76,7 +76,8 @@ public class ApiClient {
 
         //课堂评论和like统计
         @GET("/api/course_count")
-        Observable<CourseLikeCount> getCourseLikeCount(@Query(value = "course_id", encodeValue = true) String course_id);
+        Observable<CourseLikeCount> getCourseLikeCount(
+                @Query(value = "course_id", encodeValue = true) String course_id);
 
         @GET("/api/course_banners")
         Observable<CourseBanners> getCourseBanners();
