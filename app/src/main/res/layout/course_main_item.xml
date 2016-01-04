@@ -11,7 +11,7 @@
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginTop="6dp"
-        android:background="@drawable/bg_card"
+        android:background="@drawable/bg_card3"
         android:orientation="vertical">
 
         <ImageView
