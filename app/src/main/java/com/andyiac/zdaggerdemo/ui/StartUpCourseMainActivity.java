@@ -1,11 +1,16 @@
 package com.andyiac.zdaggerdemo.ui;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.andyiac.zdaggerdemo.R;
@@ -55,6 +60,8 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
 
     private ApiClient.ApiServiceInterface apiService;
     private CourseBanners mCourseBannerData;
+    private LinearLayout mLLBasicCourseBar;
+    private LinearLayout mLLProCourseBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -93,7 +100,7 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
                     @Override
                     public void onNext(CourseType courseType) {
 
-                        for (int i = 0; i < 7; i++) {
+                        for (int i = 0; i < 8; i++) {
                             Map<String, Object> category = new HashMap<>();
                             courseType.getData().getAll().get(i).getName();
                             category.put("img", R.mipmap.course_1);
@@ -214,8 +221,48 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
                         mProCourseList.addAll(course.getData().getPro().getCourse());
                         mProCourseAdapter.notifyDataSetChanged();
 
+                        updateTitleBarUI(course);
+
                     }
                 });
+    }
+
+    private void updateTitleBarUI(Course course) {
+
+
+        for (final Course.DataEntity.BasicEntity.TypeEntity entity : course.getData().getBasic().getType()) {
+
+
+            TextView tv = new TextView(this);
+            tv.setText(entity.getName());
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CourseSingleTopicListActivity.startIntent(StartUpCourseMainActivity.this, entity.getType());
+                }
+            });
+            mLLBasicCourseBar.addView(tv);
+        }
+
+        for (final Course.DataEntity.ProEntity.TypeEntity entity : course.getData().getPro().getType()) {
+            TextView tv = new TextView(this);
+            tv.setText(entity.getName());
+
+
+            if (Build.VERSION.SDK_INT < 23) {
+                tv.setTextAppearance(this, R.style.CourseTitleBar);
+            } else {
+                tv.setTextAppearance(R.style.CourseTitleBar);
+            }
+
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CourseSingleTopicListActivity.startIntent(StartUpCourseMainActivity.this, entity.getType());
+                }
+            });
+            mLLProCourseBar.addView(tv);
+        }
     }
 
 
@@ -232,6 +279,9 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
         mGVCourseTop = (GridView) findViewById(R.id.id_gv_course_top);
         mRVCourseBasic = (GridView) findViewById(R.id.id_gv_course_basic);
         mRVCoursePro = (GridView) findViewById(R.id.id_gv_course_pro);
+
+        mLLBasicCourseBar = (LinearLayout) findViewById(R.id.id_course_main_basic_bar);
+        mLLProCourseBar = (LinearLayout) findViewById(R.id.id_course_main_pro_bar);
 
         mTopCourseAdapter = new CourseMainCourseItemGridViewAdapter(this, mTopCourseList);
         mBasicCourseAdapter = new CourseMainCourseItemGridViewAdapter(this, mBasicCourseList);
@@ -274,6 +324,7 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
                 CourseDetailsActivity.startIntent(StartUpCourseMainActivity.this, course_id);
             }
         });
+
 
     }
 

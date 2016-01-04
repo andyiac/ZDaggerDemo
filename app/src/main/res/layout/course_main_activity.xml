@@ -30,10 +30,10 @@
             android:stretchMode="columnWidth" />
 
         <GridView
-            android:clickable="true"
             android:id="@+id/id_gv_course_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:columnWidth="160dp"
             android:gravity="center"
             android:listSelector="@android:color/transparent"
@@ -42,6 +42,7 @@
 
 
         <LinearLayout
+            android:id="@+id/id_course_main_basic_bar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="4dp"
@@ -58,34 +59,6 @@
                 android:text="创业必修课" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="财务" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="融资" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="法律" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="更多" />
-
         </LinearLayout>
 
 
@@ -100,6 +73,7 @@
             android:stretchMode="columnWidth" />
 
         <LinearLayout
+            android:id="@+id/id_course_main_pro_bar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="4dp"
@@ -115,34 +89,6 @@
                 android:gravity="center_vertical"
                 android:text="创业进阶课" />
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="财务" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="融资" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="法律" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="更多" />
 
         </LinearLayout>
 
