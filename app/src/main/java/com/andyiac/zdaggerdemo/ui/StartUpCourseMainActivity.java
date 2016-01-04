@@ -1,9 +1,11 @@
 package com.andyiac.zdaggerdemo.ui;
 
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,8 +110,6 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
                             mCourseCategories.add(category);
                         }
                         mCourseCategoryAdapter.notifyDataSetChanged();
-
-
                     }
                 });
     }
@@ -233,6 +233,7 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
         for (final Course.DataEntity.BasicEntity.TypeEntity entity : course.getData().getBasic().getType()) {
 
 
+            // Todo
             TextView tv = new TextView(this);
             tv.setText(entity.getName());
             tv.setOnClickListener(new View.OnClickListener() {
@@ -241,27 +242,41 @@ public class StartUpCourseMainActivity extends AppCompatActivity {
                     CourseSingleTopicListActivity.startIntent(StartUpCourseMainActivity.this, entity.getType());
                 }
             });
-            mLLBasicCourseBar.addView(tv);
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+            tv.setGravity(Gravity.CENTER);
+            Resources r = getResources();
+            float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, r.getDisplayMetrics());
+            params.leftMargin = (int) px;
+            params.rightMargin = (int) px;
+
+            mLLBasicCourseBar.addView(tv, params);
         }
+
 
         for (final Course.DataEntity.ProEntity.TypeEntity entity : course.getData().getPro().getType()) {
             TextView tv = new TextView(this);
             tv.setText(entity.getName());
 
-
-            if (Build.VERSION.SDK_INT < 23) {
-                tv.setTextAppearance(this, R.style.CourseTitleBar);
-            } else {
-                tv.setTextAppearance(R.style.CourseTitleBar);
-            }
-
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     CourseSingleTopicListActivity.startIntent(StartUpCourseMainActivity.this, entity.getType());
                 }
             });
-            mLLProCourseBar.addView(tv);
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+            tv.setGravity(Gravity.CENTER);
+            Resources r = getResources();
+            float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, r.getDisplayMetrics());
+            params.leftMargin = (int) px;
+            params.rightMargin = (int) px;
+
+            mLLProCourseBar.addView(tv, params);
         }
     }
 
