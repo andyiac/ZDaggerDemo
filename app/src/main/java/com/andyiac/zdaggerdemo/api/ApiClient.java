@@ -1,9 +1,11 @@
 package com.andyiac.zdaggerdemo.api;
 
 import com.andyiac.zdaggerdemo.data.AllCourses;
+import com.andyiac.zdaggerdemo.data.CommonResponse;
 import com.andyiac.zdaggerdemo.data.Course;
 import com.andyiac.zdaggerdemo.data.CourseBanners;
 import com.andyiac.zdaggerdemo.data.CourseDetails;
+import com.andyiac.zdaggerdemo.data.CourseDetailsComments;
 import com.andyiac.zdaggerdemo.data.CourseType;
 import com.andyiac.zdaggerdemo.data.CourseLikeCount;
 import com.squareup.okhttp.OkHttpClient;
@@ -13,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Path;
@@ -81,6 +84,43 @@ public class ApiClient {
 
         @GET("/api/course_banners")
         Observable<CourseBanners> getCourseBanners();
+
+        @GET("/api/course_comments")
+        Observable<CourseDetailsComments> getCourseComments(
+                @Query(value = "p", encodeValue = true) int p,
+                @Query(value = "n", encodeValue = true) int n,
+                @Query(value = "course_id", encodeValue = true) int course_id
+        );
+
+        @FormUrlEncoded
+        @POST("/api/course_comment/add")
+        Observable<CommonResponse> addCourseComment(
+                @Field("course_id") int course_id,
+                @Field("content") String content,
+                @Field("reply") int reply_id,
+                @Field("token") String token
+        );
+
+        @FormUrlEncoded
+        @POST("/api/course_like")
+        Observable<CommonResponse> courseLike(
+                @Field("course_id") int course_id,
+                @Field("token") String token
+        );
+
+        @FormUrlEncoded
+        @POST("/api/course_unlike")
+        Observable<CommonResponse> courseUnlike(
+                @Field("course_id") int course_id,
+                @Field("token") String token
+        );
+
+        @FormUrlEncoded
+        @POST("/api/course_comment/del")
+        Observable<CommonResponse> delCourseComment(
+                @Field("course_id") int course_id,
+                @Field("token") String token
+        );
 
     }
 }
